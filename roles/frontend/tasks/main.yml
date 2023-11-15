@@ -1,0 +1,30 @@
+- name: Install Nginx
+  ansible.builtin.dnf:
+    name: nginx
+    state: installed
+
+- name: Include App pre-clean tasks
+  ansible.builtin.import_role:
+    name: common
+    tasks_from: app-pre-clean
+
+- name: Download App Content
+  ansible.builtin.import_role:
+    name: common
+    tasks_from: app-download
+
+- name: Copy Nginx Configuration
+  ansible.builtin.template:
+    src: nginx.conf
+    dest: /etc/nginx/nginx.conf
+
+- name: Copy Roboshop Nginx Configuration
+  ansible.builtin.template:
+    src: roboshop.conf
+    dest: /etc/nginx/default.d/roboshop.conf
+
+- name: Restarting Nginx Service
+  ansible.builtin.systemd:
+    name: nginx
+    state: restarted
+    enabled: yes
