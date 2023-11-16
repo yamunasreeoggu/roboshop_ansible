@@ -15,7 +15,7 @@
     replace: '0.0.0.0'
 
 
-- -name: Restart MongoDB Service
+- name: Restart MongoDB Service
   ansible.builtin.systemd:
     name: mongod
     state: restarted
