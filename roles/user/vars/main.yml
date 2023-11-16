@@ -1,2 +1,3 @@
 component: user
 app_path: /app
+is_schema_needed: true
