@@ -15,6 +15,11 @@
   args:
     chdir: /app
 
+- name: Download pem file, DocDB
+  ansible.builtin.get_url:
+    url: https://truststore.pki.rds.amazonaws.com/global/global-bundle.pem
+    dest: /app/rds-combined-ca-bundle.pem
+
 - name: SystemD Setup
   ansible.builtin.include_tasks:
     file: systemd.yml
