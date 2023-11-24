@@ -1,3 +1,6 @@
+- name: Set Hostname
+  ansible.builtin.shell: set-hostname redis
+
 - name: Install Redis repo file
   ansible.builtin.dnf:
     name: https://rpms.remirepo.net/enterprise/remi-release-8.rpm

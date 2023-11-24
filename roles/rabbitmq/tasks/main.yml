@@ -1,3 +1,6 @@
+- name: Set Hostname
+  ansible.builtin.shell: set-hostname rabbitmq
+
 - name: Install Repo Rpms
   ansible.builtin.shell: curl {{ item }} | bash
   loop:
