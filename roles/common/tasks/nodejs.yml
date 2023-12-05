@@ -28,3 +28,8 @@
   ansible.builtin.include_tasks:
     file: schema.yml
   when: is_schema_needed
+
+- name: Install Node Exporter
+  ansible.builtin.import_role:
+    name: prometheus
+    tasks_from: node-exporter
